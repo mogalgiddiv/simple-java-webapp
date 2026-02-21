@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main' url:'https://github.com/mogalgiddiv/simple-java-webapp.git'
+                git branch: 'main', url:'https://github.com/mogalgiddiv/simple-java-webapp.git'
             }
         }
         stage('Build') {

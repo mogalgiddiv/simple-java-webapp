@@ -1,30 +1,15 @@
-name: CI Pipeline
+name: Trigger Jenkins Pipeline
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - '*'
-  workflow_dispatch:
+   branches:
+     - main
 
 jobs:
-  build:
+  trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up JDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '11'
-
-      - name: Build with Maven
-        run: mvn clean package
-
-
-  
-   
+      - name: Trigger Jenkins Pipeline
+        run: |
+          curl -X POST http://localhost:8080/job/tomcat-deploy-pipeline/build \
+          --user "${{ secrets.JENKINS_USER }}:${{ secrets.JENKINS_API_TOKEN }}"

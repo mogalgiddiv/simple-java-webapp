@@ -17,8 +17,7 @@ pipeline {
                 deploy adapters: [
                     tomcat9(
                         credentialsId: 'tomcat-creds',
-                        url: 'http://localhost:9090',
-                        path: '/simple-java-webapp'
+                        url: 'http://localhost:9090'
                     )
                 ],
                 contextPath: '/simpleapp',    
